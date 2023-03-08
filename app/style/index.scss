@@ -1,0 +1,22 @@
+@import "./screens";
+@import "./layouts";
+
+body {
+  margin: 0;
+}
+
+.deztena-app {
+  position: relative;
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+}

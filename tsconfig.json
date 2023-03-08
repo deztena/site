@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "./public/",
+    "baseUrl": ".",
+    "typeRoots": ["app/typings", "node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,          // allow sourcemap support
+    "strictNullChecks": true,   // enable strict null checks as a best practice
+    "module": "commonjs",            // specify module code generation
+    "target": "es5",            // specify ECMAScript target version
+    "allowJs": false,
+    "checkJs": false,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "experimentalDecorators": true,
+    "types": ["node"],
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": false,
+    "listFiles": true,
+    "listEmittedFiles": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["app/**/*", "app/typings/*", "webpack/*", "app/typings/images.d.ts"],
+  "exclude": ["node_modules", "public", "**/*.js", "**/*.jsx"],
+}

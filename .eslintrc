@@ -1,0 +1,40 @@
+{
+  "root": true,
+  "extends": "@actr/eslint-config",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".po"
+        ]
+      },
+      "alias": {
+        "map": [
+          [ "Components", "./app/components" ],
+          [ "Config", "./app/config" ],
+          [ "Pages", "./app/pages" ],
+          [ "EventEmitter", "./app/eventemitter" ],
+          [ "Layouts", "./app/components/layouts" ],
+          [ "Models", "./app/models" ],
+          [ "Root", "./app" ],
+          [ "Router", "./app/router/routes" ],
+          [ "Services", "./app/services" ],
+          [ "Specs", "./app/specs" ],
+          [ "Store", "./app/store" ],
+          [ "Static", "./app/static" ]
+        ],
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".po"
+        ]
+      }
+    }
+  }
+}
