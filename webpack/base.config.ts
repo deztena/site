@@ -8,14 +8,16 @@ import HtmlWebpackInlineSourcePlugin from "html-webpack-inline-source-plugin";
 import constants from "./constants";
 
 const config: Configuration = {
-  entry: [
-    path.resolve(__dirname, '../app/')
-  ],
+  entry: {
+    mainScripts: path.resolve(__dirname, '../app/js'),
+    main: path.resolve(__dirname, '../app')
+  },
   output: {
     path: path.resolve(__dirname, '../public'),
     filename: '[name]-[hash].js',
     publicPath: '/'
   },
+  externals: constants.isDev ? [] : ['jquery'],
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

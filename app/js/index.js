@@ -1,1 +1,1 @@
-console.log(12)
+import './components/burger-menu'
