@@ -1,6 +1,6 @@
 .burger-menu {
   &__wrapper {
-    font-size: 30px;
+    font-size: 15px;
     font-family: 'Mulish', sans-serif;
     position: fixed;
     top: 0;
@@ -40,6 +40,7 @@
 
   &__link {
     color: #000000;
+    font-size: 1em;
 
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -56,7 +57,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 36px;
+    font-size: 1fr;
     padding: 15px 20px;
   }
 }

@@ -10,6 +10,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
     <script>
+
+      $(document).ready(() => {
+        var aboutMeLink = $('a[href="http://about-me"]')
+        var portfolioLink = $('a[href="http://portfolio"]')
+        var servicesLink = $('a[href="http://services"]')
+        var contactLink = $('a[href="http://contact"]')
+
+        var openBurgerMenu = initBurgerMenu({
+          preventScrollToElements: true,
+          scrollEl: $('.page'),
+          topLinks: [
+            {label: 'about me', scrollTo: aboutMeLink },
+            {label: 'portfolio', scrollTo: portfolioLink},
+            {label: 'services', scrollTo: servicesLink}],
+          bottomLinks: [
+            {label: 'contact', scrollTo: contactLink}
+          ]
+        })[0]
+        $('a[href="http://header-link"]').on('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          openBurgerMenu();
+        })
+      }, 200)
+
       var openBurgerMenu
       $(document).ready(() => {
         openBurgerMenu = initBurgerMenu({
