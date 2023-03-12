@@ -10,10 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
     <script>
-      var openBurgerMenu = initBurgerMenu({
-        topLinks: [{label: 'about me', href: ''}, {label: 'portfolio', href: ''}, {label: 'Servises', href: ''}],
-        bottomLinks: [{label: 'contact', href: ''}]
-      })[0]
+      var openBurgerMenu
+      $(document).ready(() => {
+        openBurgerMenu = initBurgerMenu({
+          topLinks: [{label: 'about me'}, {label: 'portfolio'}, {label: 'Servises'}],
+          bottomLinks: [{label: 'contact', scrollTo: $('#5656')}]
+        })[0]
+      })
     </script>
     {% include './layouts/header.twig' %}
     {% include './screens/head.twig' %}
