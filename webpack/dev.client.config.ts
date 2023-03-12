@@ -12,6 +12,7 @@ const config: Configuration = {
   entry: [
     `webpack-dev-server/client?http://${constants.host}:${constants.port}`,
     'webpack/hot/only-dev-server',
+    path.resolve(__dirname, '../app')
   ],
   devServer: {
     compress: false,

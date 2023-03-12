@@ -1,4 +1,3 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import { Configuration } from 'webpack';
 import merge from 'webpack-merge';
@@ -15,11 +14,6 @@ const config: Configuration = {
     ]
   },
   plugins: [
-    ...(constants.isDev ? [] : [
-      new MiniCssExtractPlugin({
-        filename: '[name]-[hash].css'
-      }),
-    ])
   ]
 };
 
