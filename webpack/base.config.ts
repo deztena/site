@@ -4,25 +4,32 @@ import merge from 'webpack-merge';
 import rules from './rules.config';
 import webpack, {Configuration} from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import HtmlWebpackInlineSourcePlugin from "html-webpack-inline-source-plugin";
 import constants from "./constants";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
 
 const config: Configuration = {
   entry: {
-    main: path.resolve(__dirname, '../app/js'),
+    'burger-menu': path.resolve(__dirname, '../app/js/components/burger-menu'),
+    'header': path.resolve(__dirname, '../app/js/layouts/header'),
   },
   output: {
     path: path.resolve(__dirname, '../public'),
     filename: '[name]-[hash].js',
     publicPath: '/',
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   externals: constants.isDev ? [] : ['jquery'],
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name]-[hash].css'
-    }),
+    ...(constants.isDev ? [] : [
+      new MiniCssExtractPlugin({
+        filename: '[name]-[hash].css'
+      }),
+    ]),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(constants.isDev ? 'development' : 'production'),
@@ -31,16 +38,10 @@ const config: Configuration = {
       }
     }),
     new HtmlWebpackPlugin({
-      inlineSource: '.(js|css)$',
       template: path.resolve(__dirname, '../app/html/index.twig'),
       filename: 'index.html',
-      inject: 'head',
-      chunks: constants.isDev ? undefined :['main']
+      inject: 'head'
     }),
-    ...(constants.isDev ? [] : [
-      // @ts-ignore
-      new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin)
-    ]),
     new CleanWebpackPlugin()
   ]
 };

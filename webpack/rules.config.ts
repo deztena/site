@@ -22,7 +22,7 @@ const rules: Configuration = {
       }, {
         test: /\.s?[ac]ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          constants.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
         ]
