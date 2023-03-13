@@ -1,3 +1,5 @@
+@import "../minxins";
+
 .header {
     background-color: white;
     position: sticky;
@@ -13,11 +15,14 @@
     }
 
     &-burger {
-        width: 50px;
-        height: 50px;
+        @include dynamic-size(25, 50, width);
+        @include dynamic-size(25, 50, height);
+
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        margin-left: auto;
 
         &__item {
             width: 100%;

@@ -1,7 +1,10 @@
+@import "../minxins";
+@import "icon";
+
 .burger-menu {
   &__wrapper {
-    font-size: 15px;
-    font-family: 'Mulish', sans-serif;
+    @include default-fonts-settings;
+
     position: fixed;
     top: 0;
     right: 0;
@@ -57,7 +60,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 1fr;
+    font-size: 1em;
     padding: 15px 20px;
   }
 }

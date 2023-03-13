@@ -1,6 +1,7 @@
 import $ from 'jquery'
-import closeIcon from '../icons/close'
-import '../../style/components/index.scss'
+import uniqueId from 'lodash/uniqueId'
+import '../../style/components/burger-menu.scss'
+import BurgerMenu  from '../../html/components/burger-menu.twig'
 
 
 function handleOpen(wrapper) {
@@ -27,16 +28,28 @@ function handleClose(wrapper) {
   })
 }
 
-function initBurgerMenu({topLinks = [], bottomLinks = [], scrollEl = $(window), preventScrollToElements = false}) {
-  if (preventScrollToElements) {
-    [...topLinks, ...bottomLinks].map(link => link.scrollTo).map(link => {
-      if (link) {
-        link.on('click', e => e.preventDefault())
-      }
-    })
-  }
+function initBurgerMenu({topLinks: _topLinks = [], bottomLinks: _bottomLinks = [], scrollEl = $(window)}) {
+  const topLinks = _topLinks.map(link => ({
+    ...link,
+    clickHandler: uniqueId('burgerClickHandler')
+  }))
+  const bottomLinks = _bottomLinks.map(link => ({
+    ...link,
+    clickHandler: uniqueId('burgerClickHandler')
+  }))
+  const root = $(document.body)
+  const wrapperId = uniqueId('burger-menu-wrapper')
+  const burgerCloseBtnHandlerName = uniqueId('burgerCloseHandler')
 
-  const wrapper = $('<div>', {class: 'burger-menu__wrapper'}).appendTo(document.body).hide()
+  root.append(BurgerMenu({
+    topLinks,
+    bottomLinks,
+    wrapperId,
+    burgerCloseBtnHandlerName
+  }))
+
+  const wrapper = root.find(`#${wrapperId}`).hide()
+
   const closeHandler = () => handleClose(wrapper)
   const openHandler = () => handleOpen(wrapper)
   const scrollTo = (e, el) => {
@@ -52,15 +65,11 @@ function initBurgerMenu({topLinks = [], bottomLinks = [], scrollEl = $(window), 
     }
   }
 
+  [...topLinks, ...bottomLinks].forEach(link => {
+    window[link.clickHandler] = e => scrollTo(e, link.scrollTo)
+  })
 
-  wrapper.append($('<div>', {class: 'burger-menu__content'}).append($('<div>', {class: 'burger-menu__content-wrapper'}).append(
-    $('<div>', {class: 'burger-menu__row burger-menu__row_1'}).append(topLinks.map(link => $('<a>', {
-      class: 'burger-menu__link', text: link.label, href: link.href
-    }).on('click', e => scrollTo(e, link.scrollTo)))),
-    $('<div>', {class: 'burger-menu__row burger-menu__row_2'}).append(bottomLinks.map(link => $('<a>', {
-      class: 'burger-menu__link', text: link.label, href: link.href
-    }).on('click', e => scrollTo(e, link.scrollTo))))
-  )), closeIcon.attr('class', 'burger-menu__close-icon ' + closeIcon.attr('class')).on('click', closeHandler))
+  window[burgerCloseBtnHandlerName] = closeHandler
 
   return [
     openHandler,

@@ -1,0 +1,5 @@
+@import "../variables/index";
+
+@function dynamic-size ($min-size, $max-size) {
+  @return calc(#{$min-size}px + (#{$max-size}-#{$min-size}) * ((100vw - #{$sm-screen-max}px) / (#{$md-screen-max}-#{$sm-screen-max})))
+}

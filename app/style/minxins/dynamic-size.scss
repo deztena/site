@@ -1,0 +1,13 @@
+@import "../variables";
+
+@mixin dynamic-size ($min-size, $max-size, $property) {
+  #{$property}: #{$min-size}px;
+
+  @media screen and (min-width: #{$sm-screen-max}px) {
+    #{$property}: dynamic-size($min-size, $max-size);
+  }
+
+  @media screen and (min-width: #{$md-screen-max}px) {
+    #{$property}: #{$max-size}px;
+  }
+}
