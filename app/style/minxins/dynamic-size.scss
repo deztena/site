@@ -1,13 +1,14 @@
 @import "../variables";
+@import "../functions";
 
-@mixin dynamic-size ($min-size, $max-size, $property) {
-  #{$property}: #{$min-size}px;
+@mixin dynamic-size ($min-size, $max-size, $property, $additional: 0) {
+  #{$property}: calc(#{$min-size}px + #{$additional}px);
 
   @media screen and (min-width: #{$sm-screen-max}px) {
-    #{$property}: dynamic-size($min-size, $max-size);
+    #{$property}: dynamic-size($min-size, $max-size, $additional);
   }
 
   @media screen and (min-width: #{$md-screen-max}px) {
-    #{$property}: #{$max-size}px;
+    #{$property}: calc(#{$max-size}px + #{$additional}px);
   }
 }
