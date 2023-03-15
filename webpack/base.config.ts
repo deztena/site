@@ -11,7 +11,9 @@ import {CleanWebpackPlugin} from "clean-webpack-plugin";
 const config: Configuration = {
   entry: {
     'burger-menu': path.resolve(__dirname, '../app/js/components/burger-menu'),
+    'bg-text': path.resolve(__dirname, '../app/js/components/bg-text'),
     'header': path.resolve(__dirname, '../app/js/layouts/header'),
+    'screen-head': path.resolve(__dirname, '../app/js/screens/head'),
   },
   output: {
     path: path.resolve(__dirname, '../public'),

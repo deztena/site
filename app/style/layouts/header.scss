@@ -5,6 +5,8 @@
     @include dynamic-size(25, 50, height, 50);
     width: 100%;
 
+    position: sticky;
+
     &__wrapper {
         background-color: white;
         position: fixed;

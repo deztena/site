@@ -1,4 +1,8 @@
+@import "../minxins";
+@import "./common";
+
 .head-screen {
+  @include default-fonts-settings;
   $spacing: 130px;
   margin-top: -100px;
   padding-top: 100px;
@@ -10,11 +14,6 @@
     flex-direction: column;
     height: 100%;
     padding-top: 100px;
-
-    @media screen and (max-width: 400px) {
-
-    }
-
 
     &__container {
       flex: 1 1 100%;
@@ -72,7 +71,7 @@
     }
 
     &__text {
-      margin-left: 110px;
+      @include dynamic-size(50, 100, margin-left);
       margin-top: auto;
     }
   }
@@ -83,16 +82,25 @@
     width: 100%;
     top: 0;
     left: 0;
-
-    font-weight: 500;
-    font-size: 120px;
-    font-style: italic;
-    text-transform: lowercase;
     white-space: nowrap;
     line-height: 1;
+    display: flex;
+    flex-direction: column;
 
     p {
+      @include default-fonts-settings;
+      @include dynamic-size(50, 120, font-size);
+      font-weight: 500;
+      text-transform: lowercase;
       margin: 0;
+      position: absolute;
+      text-align: right;
+    }
+
+    div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
   }
 }
