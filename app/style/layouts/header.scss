@@ -1,20 +1,17 @@
 @import "../minxins";
 @import "../functions";
+@import "../misc/container";
 
 .header {
     @include dynamic-size(25, 50, height, 50);
     width: 100%;
-
-    position: sticky;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: -15px;
 
     &__wrapper {
         background-color: white;
-        position: fixed;
-        z-index: 5;
-        width: 100%;
-        top: 0;
-        left: 0;
-
         padding-top: 25px;
         padding-bottom: 25px;
     }
