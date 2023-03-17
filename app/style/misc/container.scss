@@ -1,5 +1,12 @@
 @import "../variables";
 
+.block-html {
+  padding: 0;
+}
+html, body, .deztena-app {
+  height: 100%;
+}
+
 .container {
   margin: 0 auto;
   max-width: #{$md-screen-max}px;

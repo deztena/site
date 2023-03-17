@@ -2,7 +2,7 @@
   "name": "deztena-sdite",
   "version": "1.0.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development HOST=192.168.88.253 webpack-dev-server --config webpack/dev.client.config.ts --watch",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.client.config.ts --watch",
     "build": "cross-env STATIC_PATH=/account/ NODE_ENV=production run-s \"build:*\"",
     "build:app": "webpack --config webpack/production.config.ts"
   },
@@ -18,7 +18,6 @@
     "ts-node": "10.9.1"
   },
   "devDependencies": {
-    "@types/node": "14.18.37",
     "@types/webpack": "4.41.33",
     "@babel/cli": "7.12.1",
     "@babel/core": "7.12.3",

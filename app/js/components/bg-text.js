@@ -1,9 +1,6 @@
-import BgText from '../../html/components/bgr-text.twig'
-import uniqueId from "lodash/uniqueId";
 import throttle from "lodash/throttle";
 
-const renderBgText = (letter) => {
-  const wrapperId = uniqueId('wrapper-id-')
+const renderBgText = ({ renderTo, letter}) => {
   let rows = []
   let rowHeight = 0
   let letterWidth = 0
@@ -72,11 +69,7 @@ const renderBgText = (letter) => {
     return rowWrapper
   }
 
-  document.write(BgText({
-    wrapperId
-  }))
-
-  const wrapper = $(`#${wrapperId}`)
+  const wrapper = renderTo
 
   function updateState() {
     const testElement = $('<p>').append($('<span>', { text: letter })).appendTo(wrapper.css('transform', 'translateX(-100%)'))

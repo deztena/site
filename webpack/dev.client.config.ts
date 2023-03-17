@@ -18,6 +18,8 @@ const config: Configuration = {
     compress: false,
     port: constants.port,
     host: constants.host,
+    useLocalIp: true,
+    open: true,
     contentBase: path.resolve(__dirname, '../public'),
     hot: true,
     historyApiFallback: {

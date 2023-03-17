@@ -1,0 +1,24 @@
+.section-main {
+  &_reset {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    & > div {
+      padding: 0;
+    }
+  }
+}
+.page-container {
+  &_reset {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    padding: 0;
+  }
+}
+.block-html {
+  &_reset {
+    height: 100%;
+    padding: 0;
+  }
+}
