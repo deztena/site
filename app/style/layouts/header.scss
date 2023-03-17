@@ -3,27 +3,34 @@
 @import "../misc/container";
 
 .header {
-    @include dynamic-size(25, 50, height, 50);
+    @include dynamic-size(0, 50, height, 35);
     width: 100%;
     position: fixed;
     z-index: 5;
     top: 0;
-    left: -15px;
+    left: 0;
+
+    @media screen and (min-width: #{$md-screen-max}px) {
+        & {
+            left: -15px;
+        }
+    }
 
     &__wrapper {
         background-color: white;
-        padding-top: 25px;
-        padding-bottom: 25px;
+        @include dynamic-size(10, 25, padding-top);
+        @include dynamic-size(10, 25, padding-bottom);
     }
 
     &__container {
         display: flex;
         align-items: flex-end;
+        @include dynamic-size(10, 25, padding-right);
     }
 
     &-burger {
-        @include dynamic-size(25, 50, width);
-        @include dynamic-size(25, 50, height);
+        @include dynamic-size(15, 50, width);
+        @include dynamic-size(15, 50, height);
 
         display: flex;
         flex-direction: column;
