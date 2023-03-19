@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><script src="/core-0312d5fc0f093cfa14df.js"></script><script src="/vendors~burger-menu~dropdown~header~screen-head-01275c65d37eeaf4453c.js"></script><script src="/burger-menu-432d0efcff4aa5eccca1.js"></script><script src="/bg-text-57ca4be2b3a7fa89d2d8.js"></script><script src="/header-fdfcbb19a4c9b51af876.js"></script><script src="/dropdown-60a067eba45a2712510a.js"></script><script src="/screen-head-99a1398d96544d6b65a9.js"></script></head><body><div class="deztena-app"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet"><script>renderHeader()</script><script>renderScreenHead()</script><script>renderDropdowm({
+            triggerImage: 'http://ipic.su/img/img7/fs/Slice19.1679247751.png', contentImage: 'http://ipic.su/img/img7/fs/Slice30.1679247768.png'
+        })</script><script>$(document).ready(() => {
+        var aboutMeLink = $('#section-about-me')
+        var portfolioLink = $('#section-portfolio')
+        var servicesLink = $('#section-services')
+        var contactLink = $('#section-contacts')
+
+        window.openBurgerMenu = initBurgerMenu({
+          preventScrollToElements: true,
+          scrollEl: $('.page'),
+          topLinks: [
+            {label: 'about me', scrollTo: aboutMeLink },
+            {label: 'portfolio', scrollTo: portfolioLink},
+            {label: 'services', scrollTo: servicesLink}],
+          bottomLinks: [
+            {label: 'contact', scrollTo: contactLink}
+          ]
+        })[0]
+
+        $('#menu-trigger').on('click', openBurgerMenu)
+      })</script></div></body></html>

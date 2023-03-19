@@ -1,0 +1,15 @@
+{
+  "errors": [],
+  "warnings": [],
+  "assetsByChunkName": {
+    "vendors~burger-menu~dropdown~header~screen-head": "vendors~burger-menu~dropdown~header~screen-head-01275c65d37eeaf4453c.js",
+    "bg-text": "bg-text-57ca4be2b3a7fa89d2d8.js",
+    "burger-menu": "burger-menu-432d0efcff4aa5eccca1.js",
+    "core": "core-0312d5fc0f093cfa14df.js",
+    "dropdown": "dropdown-60a067eba45a2712510a.js",
+    "header": "header-fdfcbb19a4c9b51af876.js",
+    "screen-head": "screen-head-99a1398d96544d6b65a9.js"
+  },
+  "assets": [],
+  "filteredAssets": 8
+}
