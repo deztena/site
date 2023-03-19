@@ -1,5 +1,3 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
 import constants from './constants';
 import {Configuration} from "webpack";
 
@@ -22,7 +20,7 @@ const rules: Configuration = {
       }, {
         test: /\.s?[ac]ss$/,
         use: [
-          constants.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           'sass-loader',
         ]
