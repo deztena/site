@@ -3,7 +3,10 @@
 @import "../misc";
 
 #screen-head {
-  height: 100vh;
+  height: 100%;
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
 }
 
 .head-screen {
@@ -30,9 +33,8 @@
       flex: 1 1 100%;
       display: flex;
       flex-direction: column;
-      margin-top: 50px;
-      margin-bottom: 50px;
-
+      margin-top: 70px;
+      margin-bottom: 70px;
     }
 
     &__photo {
@@ -46,10 +48,9 @@
         width: 100%;
         height: 330px;
         z-index: 1;
-        box-shadow: 5px 5px 20px -2px black;
 
-        @include dynamic-size(250, 330, max-width);
-        @include dynamic-size(250, 330, max-height);
+        @include dynamic-size(150, 330, max-width);
+        @include dynamic-size(150, 330, max-height);
       }
     }
 
@@ -81,6 +82,10 @@
       margin: 0;
       position: absolute;
       text-align: right;
+    }
+
+    span {
+      margin: 0 10px;
     }
 
     div {

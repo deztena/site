@@ -4,6 +4,7 @@ import Head  from '../../html/screens/head.twig'
 function renderScreenHead({ renderTo } = {}) {
   renderTo?.parents('.section-main').addClass('section-main_reset')
   renderTo?.parents('.page-container').addClass('page-container_reset')
+  renderTo?.parents('.block-html').addClass('block-html_reset')
   let showIndex = 0
   let images = []
 
@@ -20,36 +21,36 @@ function renderScreenHead({ renderTo } = {}) {
     images.css('opacity', 0)
 
     $(images).eq(0).css('opacity', 1)
-    $(images).eq(1).delay(5000).animate({
+    $(images).eq(1).delay(300).animate({
       opacity: 0,
     }, {
       easing: 'linear',
-      duration: 2000,
+      duration: 1,
     }).animate({
       opacity: 1,
     }, {
       easing: 'linear',
-      duration: 2000,
+      duration: 1,
       complete: function showNext() {
-        $(this).delay(5000).animate({
+        $(this).delay(300).animate({
           opacity: 0,
         }, {
           easing: 'linear',
-          duration: 2000,
+          duration: 1,
           complete() {
             if (!$(this).next()[0]) {
               setTimeout(() => {
                 start()
-              }, 5000)
+              }, 0)
             }
           }
         })
 
-        $(this).next().delay(5000).animate({
+        $(this).next().delay(300).animate({
           opacity: 1,
         }, {
           easing: 'linear',
-          duration: 2000,
+          duration: 1,
           complete: showNext
         })
       }
