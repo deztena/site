@@ -5,11 +5,12 @@ import rules from './rules.config';
 import webpack, {Configuration} from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import constants from "./constants";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
+import {StatsWriterPlugin} from "webpack-stats-plugin";
 
 const config: Configuration = {
   entry: {
+    core: path.resolve(__dirname, '../app/js/core'),
     'burger-menu': path.resolve(__dirname, '../app/js/components/burger-menu'),
     'bg-text': path.resolve(__dirname, '../app/js/components/bg-text'),
     'header': path.resolve(__dirname, '../app/js/layouts/header'),
@@ -18,7 +19,7 @@ const config: Configuration = {
   },
   output: {
     path: path.resolve(__dirname, '../public'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[contenthash].js',
     publicPath: '/',
   },
   optimization: {
@@ -28,11 +29,6 @@ const config: Configuration = {
   },
   externals: constants.isDev ? [] : ['jquery'],
   plugins: [
-    ...(constants.isDev ? [] : [
-      new MiniCssExtractPlugin({
-        filename: '[name]-[hash].css'
-      }),
-    ]),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(constants.isDev ? 'development' : 'production'),
@@ -45,7 +41,13 @@ const config: Configuration = {
       filename: 'index.html',
       inject: 'head'
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new StatsWriterPlugin({
+      stats: {
+        all: false,
+        assets: true
+      }
+    })
   ]
 };
 export default merge(rules, config);

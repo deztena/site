@@ -82,6 +82,7 @@
     "html-webpack-inline-source-plugin": "1.0.0-beta.2",
     "raw-loader": "^4.0.2",
     "twig-loader": "^0.5.5",
-    "jquery": "^3.6.4"
+    "jquery": "^3.6.4",
+    "webpack-stats-plugin": "^1.1.1"
   }
 }
