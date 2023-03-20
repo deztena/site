@@ -31,7 +31,6 @@ const config: Configuration = {
       }
     }
   },
-  externals: constants.isDev ? [] : ['jquery'],
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

@@ -4,10 +4,11 @@
   "assetsByChunkName": {
     "locutus": "locutus-7a09a48fdb7fc28ac35f.chunk.js",
     "twig": "twig-d0cd8fb1b72e6fad8619.chunk.js",
-    "main": "main-3393e7d5ecd2b58a143d.chunk.js",
-    "runtime": "runtime-7182ec46b8d69a29bcc8.js",
-    "vendors~main": "vendors~main-9f2518c7c20a74491160.chunk.js"
+    "jquery": "jquery-a8a949f4eb2a1ea08352.chunk.js",
+    "main": "main-347c5432c340d7207ac4.chunk.js",
+    "runtime": "runtime-1e1d8d3d76392661d7cf.js",
+    "vendors~main": "vendors~main-07aa22894b41e025c384.chunk.js"
   },
   "assets": [],
-  "filteredAssets": 11
+  "filteredAssets": 12
 }
