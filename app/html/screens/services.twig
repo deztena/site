@@ -1,0 +1,17 @@
+<div class="screen-services container" id="{{ id }}">
+    <div class="screen__content">
+        <div class="screen-services__bg">
+            <img src="http://ipic.su/img/img7/fs/IMG_5963(4)1(1).1679343866.png" alt="">
+        </div>
+        <div class="screen-services__bg">
+            <img src="http://ipic.su/img/img7/fs/IMG_5963(4)1.1679343885.png" alt="">
+        </div>
+        <div class="screen-services__grid">
+            {% for word in words %}
+                <div class="screen-services__grid-item {% if loop.index == 5 %} screen-services__grid-item_central {% endif %}">
+                    <span class="screen-services__grid-item-word"></span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

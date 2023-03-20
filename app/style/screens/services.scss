@@ -1,0 +1,68 @@
+@import "../minxins";
+@import "./common";
+@import "../misc";
+
+#screen-services {
+  height: 100%;
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+}
+
+.screen-services {
+  @include default-fonts-settings;
+  @include dynamic-size(10, 22, font-size);
+
+  &__bg {
+    position: absolute;
+    z-index: 0;
+
+    @include dynamic-size(130, 310, height);
+    @include dynamic-size(130, 310, width);
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .screen__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    @include dynamic-size(280, 600, height);
+    @include dynamic-size(280, 600, width);
+  }
+
+  &__grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid black;
+
+    height: 100%;
+    width: 100%;
+
+    &_central {
+      border: 1px solid white;
+      color: white;
+    }
+
+    &-word {
+      text-transform: uppercase;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}

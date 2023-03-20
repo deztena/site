@@ -15,6 +15,7 @@ const config: Configuration = {
     'header': path.resolve(__dirname, '../app/js/layouts/header'),
     'dropdown': path.resolve(__dirname, '../app/js/components/dropdown'),
     'screen-head': path.resolve(__dirname, '../app/js/screens/head'),
+    'screen-services': path.resolve(__dirname, '../app/js/screens/services')
   },
   output: {
     path: path.resolve(__dirname, '../public'),
@@ -22,9 +23,16 @@ const config: Configuration = {
     publicPath: '/',
   },
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all'
-    }
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors'
+        }
+      }
+    },
   },
   externals: constants.isDev ? [] : ['jquery'],
   plugins: [
