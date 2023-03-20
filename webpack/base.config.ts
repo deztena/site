@@ -11,10 +11,10 @@ import {StatsWriterPlugin} from "webpack-stats-plugin";
 const config: Configuration = {
   entry: path.resolve(__dirname, '../app/js'),
   output: {
-    path: path.resolve(__dirname, '../public'),
+    path: path.resolve(__dirname, '../release'),
     filename: '[name]-[contenthash].js',
     chunkFilename: '[name]-[contenthash].chunk.js',
-    publicPath: '/',
+    publicPath: 'https://raw.githubusercontent.com/deztena/site/test-release/release/',
   },
   optimization: {
     runtimeChunk: 'single',
