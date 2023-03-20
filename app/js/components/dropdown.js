@@ -35,7 +35,7 @@ const renderDropdown = ({triggerImage, contentImage, renderTo }) => {
 }
 
 
-window.renderDropdowm = renderDropdown
+export default renderDropdown
 
 $(document).ready(() => {
     attachDropdowns()

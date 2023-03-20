@@ -9,6 +9,11 @@ import constants from "./constants";
 
 const config: Configuration = {
   mode: 'development',
+  output: {
+    publicPath: '/',
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
+  },
   entry: [
     `webpack-dev-server/client?http://${constants.host}:${constants.port}`,
     'webpack/hot/only-dev-server',

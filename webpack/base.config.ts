@@ -9,22 +9,26 @@ import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import {StatsWriterPlugin} from "webpack-stats-plugin";
 
 const config: Configuration = {
-  entry: {
-    core: path.resolve(__dirname, '../app/js/core'),
-    'burger-menu': path.resolve(__dirname, '../app/js/components/burger-menu'),
-    'bg-text': path.resolve(__dirname, '../app/js/components/bg-text'),
-    'header': path.resolve(__dirname, '../app/js/layouts/header'),
-    'dropdown': path.resolve(__dirname, '../app/js/components/dropdown'),
-    'screen-head': path.resolve(__dirname, '../app/js/screens/head'),
-  },
+  entry: path.resolve(__dirname, '../app/js'),
   output: {
     path: path.resolve(__dirname, '../public'),
     filename: '[name]-[contenthash].js',
+    chunkFilename: '[name]-[contenthash].chunk.js',
     publicPath: '/',
   },
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+      cacheGroups: {
+        lodash: {
+          test: /[\\/]node_modules[\\/]/,
+          name: function (module) {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            return `${packageName.replace('@', '')}`;
+          }
+        }
+      }
     }
   },
   externals: constants.isDev ? [] : ['jquery'],
