@@ -1,8 +1,47 @@
-<div class="dropdown">
-    <div class="dropdown__trigger">
-        <img src="{{ triggerImage }}" />
+<div class="d-dropdown" id="{{ id }}">
+    <div class="d-dropdown__title">
+        <span class="d-dropdown__title-text">
+            {{ title }}
+        </span>
+        <span class="d-dropdown__title-arrow icon">
+            <svg viewBox="0 0 110 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M110 6L100 0.226497V11.7735L110 6ZM0 7H101V5H0V7Z" fill="black"/>
+            </svg>
+        </span>
     </div>
-    <div class="dropdown__content">
-        <img src="{{ contentImage }}" />
+    <span class="d-dropdown__underline"></span>
+    <div class="d-dropdown__content">
+        {% for listItem in content.list %}
+            <div class="d-dropdown__content-list-wrapper">
+                <div class="d-dropdown__content-list-title">
+                    {{ listItem.title }}
+                </div>
+                <div class="d-dropdown__content-list">
+                    {% for row in listItem.rows %}
+                        <div class="d-dropdown__content-list-item">
+                            {{ row }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="d-dropdown__content-additional-info-wrapper">
+            <div class="d-dropdown__content-additional-info-row">
+                <span class="d-dropdown__content-additional-info-row-label">
+                    Стоимость
+                </span>
+                <span class="d-dropdown__content-additional-info-row-value">
+                    {{ content.cost }}
+                </span>
+            </div>
+            <div class="d-dropdown__content-additional-info-row">
+                <span class="d-dropdown__content-additional-info-row-label">
+                    срок создания
+                </span>
+                <span class="d-dropdown__content-additional-info-row-value">
+                    {{ content.duration }}
+                </span>
+            </div>
+        </div>
     </div>
 </div>

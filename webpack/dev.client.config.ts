@@ -14,6 +14,10 @@ const config: Configuration = {
     'webpack/hot/only-dev-server',
     path.resolve(__dirname, '../app')
   ],
+  output: {
+    filename: '[name].js',
+    publicPath: '/',
+  },
   devServer: {
     compress: false,
     port: constants.port,

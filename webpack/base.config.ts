@@ -10,7 +10,6 @@ import {StatsWriterPlugin} from "webpack-stats-plugin";
 
 const config: Configuration = {
   entry: {
-    core: path.resolve(__dirname, '../app/js/core'),
     'burger-menu': path.resolve(__dirname, '../app/js/components/burger-menu'),
     'bg-text': path.resolve(__dirname, '../app/js/components/bg-text'),
     'header': path.resolve(__dirname, '../app/js/layouts/header'),

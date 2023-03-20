@@ -1,13 +1,111 @@
-.dropdown {
-  &__trigger {
+@import "../minxins";
 
+.d-dropdown {
+  @include default-fonts-settings;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include dynamic-size(10, 30, margin-bottom);
+
+
+    &_opened {
+      @include dynamic-size(30, 50, margin-bottom);
+    }
+
+
+    &-text {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    &-arrow {
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      height: 10px;
+      @include dynamic-size(50, 100, font-size);
+      @include dynamic-size(20, 100, margin-right);
+
+      svg {
+        height: auto !important;
+      }
+    }
   }
+
+  &__underline {
+    display: block;
+    background-color: black;
+    @include dynamic-size(1, 2, height);
+  }
+
   &__content {
+    &-list {
+      &:not(:last-child) {
+        @include dynamic-size(10, 15, margin-bottom);
+      }
 
-  }
+      &-item {
+        position: relative;
+        padding-left: 20px;
+        display: flex;
 
-  img {
-    width: 100%;
-    height: auto;
+        &:before {
+          content: '';
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          background-color: #AEAEAE;
+          left: 5px;
+          top: 15px;
+          border-radius: 50%;
+
+          @include dynamic-size(10, 15, top);
+        }
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+      }
+
+      &-title {
+        @include dynamic-size(5, 15, margin-bottom);
+      }
+
+      &-wrapper {
+        color: #AEAEAE;
+        @include dynamic-size(15, 25, font-size);
+
+        &:not(:last-child) {
+          @include dynamic-size(15, 25, margin-bottom);
+        }
+      }
+    }
+
+    &-additional-info {
+      &-wrapper {
+        @include dynamic-size(15, 25, font-size);
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      &-row {
+        display: flex;
+        justify-content: space-between;
+
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+
+        &-label {
+
+        }
+
+        &-value {
+          text-align: right;
+        }
+      }
+    }
   }
 }
