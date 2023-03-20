@@ -5,42 +5,48 @@
     <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
 </head>
 <body>
-<div class="deztena-app">
+<div id="deztena-app">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
     <script>
-        renderHeader()
-    </script>
-    <script>
-      renderScreenHead()
-    </script>
-    <script>
-        renderDropdowm({
-            triggerImage: 'http://ipic.su/img/img7/fs/Slice19.1679247751.png', contentImage: 'http://ipic.su/img/img7/fs/Slice30.1679247768.png'
+        renderHeader({
+            ready: function () {
+                var aboutMeLink = $('#section-about-me')
+                var portfolioLink = $('#section-portfolio')
+                var servicesLink = $('#section-services')
+                var contactLink = $('#section-contacts')
+
+                initBurgerMenu({
+                    preventScrollToElements: true,
+                    scrollEl: $('.page'),
+                    topLinks: [
+                        {label: 'about me', scrollTo: aboutMeLink },
+                        {label: 'portfolio', scrollTo: portfolioLink},
+                        {label: 'services', scrollTo: servicesLink}],
+                    bottomLinks: [
+                        {label: 'contact', scrollTo: contactLink}
+                    ],
+                    trigger: $('#burger-menu-open-trigger')
+                })
+            }
         })
     </script>
     <script>
-      $(document).ready(() => {
-        var aboutMeLink = $('#section-about-me')
-        var portfolioLink = $('#section-portfolio')
-        var servicesLink = $('#section-services')
-        var contactLink = $('#section-contacts')
-
-        window.openBurgerMenu = initBurgerMenu({
-          preventScrollToElements: true,
-          scrollEl: $('.page'),
-          topLinks: [
-            {label: 'about me', scrollTo: aboutMeLink },
-            {label: 'portfolio', scrollTo: portfolioLink},
-            {label: 'services', scrollTo: servicesLink}],
-          bottomLinks: [
-            {label: 'contact', scrollTo: contactLink}
-          ]
-        })[0]
-
-        $('#menu-trigger').on('click', openBurgerMenu)
-      })
+        renderScreenHead({})
+    </script>
+    <div class="dropdown">
+        <div class="dropdown__trigger">
+            <img src="http://ipic.su/img/img7/fs/Slice19.1679247751.png" />
+        </div>
+        <div class="dropdown__content">
+            <img src="http://ipic.su/img/img7/fs/Slice30.1679247768.png" />
+        </div>
+    </div>
+    <script>
+        renderDropdown({
+            triggerImage: 'http://ipic.su/img/img7/fs/Slice19.1679247751.png', contentImage: 'http://ipic.su/img/img7/fs/Slice30.1679247768.png'
+        })
     </script>
 </div>
 </body>

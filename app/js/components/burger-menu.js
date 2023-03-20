@@ -28,7 +28,7 @@ function handleClose(wrapper) {
   })
 }
 
-function initBurgerMenu({topLinks: _topLinks = [], bottomLinks: _bottomLinks = [], scrollEl = $(window)}) {
+function initBurgerMenu({topLinks: _topLinks = [], bottomLinks: _bottomLinks = [], scrollEl = $(window), trigger}) {
   const topLinks = _topLinks.map(link => ({
     ...link,
     clickHandler: uniqueId('burgerClickHandler')
@@ -71,10 +71,11 @@ function initBurgerMenu({topLinks: _topLinks = [], bottomLinks: _bottomLinks = [
 
   window[burgerCloseBtnHandlerName] = closeHandler
 
-  return [
-    openHandler,
-    closeHandler
-  ]
+  $(document).ready(() => {
+    if (trigger) {
+      trigger.on('click', openHandler)
+    }
+  })
 }
 
-window.initBurgerMenu = initBurgerMenu
+export default initBurgerMenu

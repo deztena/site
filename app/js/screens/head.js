@@ -1,23 +1,13 @@
 import '../../style/screens/head.scss'
-import Head  from '../../html/screens/head.twig'
+import $ from 'jquery'
+import Head from '../../html/screens/head.twig'
 
-function renderScreenHead({ renderTo } = {}) {
-  renderTo?.parents('.section-main').addClass('section-main_reset')
-  renderTo?.parents('.page-container').addClass('page-container_reset')
-  renderTo?.parents('.block-html').addClass('block-html_reset')
-  let showIndex = 0
-  let images = []
+function _renderScreenHead({}, root) {
+  root.parents('.section-main').addClass('section-main_reset')
+  root.parents('.page-container').addClass('page-container_reset')
+  root.parents('.block-html').addClass('block-html_reset')
 
-  if (renderTo) {
-    renderTo.append(Head())
-  } else {
-    document.write(Head())
-  }
-
-  const wrapper = renderTo ? renderTo : $(document)
-
-  images = wrapper.find('.head-screen-photos__photo-wrapper').children()
-  const start = () => {
+  const start = (images) => {
     images.css('opacity', 0)
 
     $(images).eq(0).css('opacity', 1)
@@ -40,7 +30,7 @@ function renderScreenHead({ renderTo } = {}) {
           complete() {
             if (!$(this).next()[0]) {
               setTimeout(() => {
-                start()
+                start(images)
               }, 0)
             }
           }
@@ -57,7 +47,11 @@ function renderScreenHead({ renderTo } = {}) {
     })
   }
 
-  start()
+  root.before($('<div>', { class: 'screen head-screen', html: Head()})).remove()
+
+  setImmediate(() => {
+    start(root.find('.head-screen-photos__photo-wrapper').children())
+  })
 }
 
-window.renderScreenHead = renderScreenHead
+export default _renderScreenHead

@@ -105,4 +105,4 @@ const renderBgText = ({ renderTo, letter}) => {
   }, 500)
 }
 
-window.renderBgText = renderBgText
+export default renderBgText
