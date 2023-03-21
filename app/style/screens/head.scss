@@ -55,7 +55,7 @@
     }
 
     &__text {
-      @include dynamic-size(50, 100, margin-left);
+      @include dynamic-size(50, 450, margin-left);
       margin-top: auto;
     }
   }

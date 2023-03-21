@@ -7,8 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    @include dynamic-size(10, 30, margin-bottom);
+    margin-bottom: 10px;
 
 
     &_opened {
@@ -38,7 +37,7 @@
   &__underline {
     display: block;
     background-color: black;
-    @include dynamic-size(1, 2, height);
+    height: 1px;
   }
 
   &__content {
@@ -77,6 +76,8 @@
         color: #AEAEAE;
         @include dynamic-size(15, 25, font-size);
 
+        font-weight: 400;
+
         &:not(:last-child) {
           @include dynamic-size(15, 25, margin-bottom);
         }
@@ -87,7 +88,7 @@
       &-wrapper {
         @include dynamic-size(15, 25, font-size);
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: 600;
       }
 
       &-row {

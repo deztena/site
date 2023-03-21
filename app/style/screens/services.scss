@@ -17,8 +17,8 @@
     position: absolute;
     z-index: 0;
 
-    @include dynamic-size(130, 310, height);
-    @include dynamic-size(130, 310, width);
+    @include dynamic-size(105, 230, height);
+    @include dynamic-size(105, 230, width);
 
     img {
       height: 100%;
