@@ -100,9 +100,16 @@ const renderBgText = ({ renderTo, letter}) => {
 
   window.addEventListener('resize', throttle(() => updateRows(), 500))
 
+  wrapper.css('opacity', 0)
+
   setTimeout(() => {
     updateRows()
-  }, 500)
+    wrapper.animate({
+      opacity: 1
+    }, {
+      duration: 200
+    })
+  }, 1000)
 }
 
 window.renderBgText = renderBgText
