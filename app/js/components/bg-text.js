@@ -102,14 +102,20 @@ const renderBgText = ({ renderTo, letter}) => {
 
   wrapper.css('opacity', 0)
 
-  setTimeout(() => {
+  const intervalId = setInterval(() => {
     updateRows()
-    wrapper.animate({
-      opacity: 1
-    }, {
-      duration: 200
+
+    setImmediate(() => {
+      if (rows.length > 1) {
+        clearInterval(intervalId)
+        wrapper.animate({
+          opacity: 1
+        }, {
+          duration: 200
+        })
+      }
     })
-  }, 1000)
+  }, 100)
 }
 
 window.renderBgText = renderBgText
