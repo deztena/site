@@ -59,7 +59,7 @@ function initBurgerMenu({topLinks: _topLinks = [], bottomLinks: _bottomLinks = [
       closeHandler()
 
       scrollEl[0].scrollTo({
-        top: el.offset().top,
+        top: (scrollEl.scrollTop() + el.offset().top) - 25,
         behavior: 'smooth'
       })
     }
