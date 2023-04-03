@@ -19,22 +19,32 @@ const renderDropdown = ({ title, content, renderTo }) => {
         document.write(render())
     }
 
+    function toggle(dropdown) {
+        const title = dropdown.find('.d-dropdown__title')
+        if (!title.hasClass('d-dropdown__title_opened')) {
+            dropdown.find('.d-dropdown__underline').hide()
+            dropdown.find('.d-dropdown__content').show()
+            title.addClass('d-dropdown__title_opened');
+            $('.d-dropdown').each(function () {
+                if ($(this).children('.d-dropdown__title').hasClass('d-dropdown__title_opened') && this !== dropdown[0]) {
+                    setImmediate(() => {
+                        toggle($(this))
+                    })
+                }
+            })
+        } else {
+            dropdown.find('.d-dropdown__underline').show()
+            dropdown.find('.d-dropdown__content').hide()
+            title.removeClass('d-dropdown__title_opened')
+        }
+    }
+
     setImmediate(() => {
         const dropdown = $(`#${id}`)
 
         dropdown.find('.d-dropdown__content').hide()
-        dropdown.find('.d-dropdown__title').on('click', function () {
-            const parent = $(this).parents('.d-dropdown')
-
-            if (!$(this).hasClass('d-dropdown__title_opened')) {
-                parent.find('.d-dropdown__underline').hide()
-                parent.find('.d-dropdown__content').show()
-                $(this).addClass('d-dropdown__title_opened')
-            } else {
-                parent.find('.d-dropdown__underline').show()
-                parent.find('.d-dropdown__content').hide()
-                $(this).removeClass('d-dropdown__title_opened')
-            }
+        dropdown.find('.d-dropdown__title').on('click', () => {
+            toggle(dropdown)
         })
     })
 }

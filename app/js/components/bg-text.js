@@ -7,7 +7,7 @@ const renderBgText = ({ renderTo, letter}) => {
   let wrapperHeight = 0
   let wrapperWidth = 0
 
-  const getRowPart = (offset) => {
+  const getRowPart = () => {
     const row = $('<p>').append(new Array(letterWidth ? Math.ceil(wrapperWidth / letterWidth) + 2 : 1)
       .fill(1)
       .map(
@@ -18,12 +18,12 @@ const renderBgText = ({ renderTo, letter}) => {
     return row
   }
 
-  const getRow = (reverse = false) => {
+  const getRow = (reverse = false, index) => {
     const offset = (Math.random() * (300 - 20) + 20)
-    const rowWrapper = $('<div>').css('height', rowHeight)
+    const rowWrapper = $('<div>').css('top', rowHeight * index).css('height', rowHeight)
     let beforeRow = getRowPart()
     let afterRow = getRowPart()
-    let row = getRowPart((Math.random() * (2 - 1) + 1) === 1 ? offset * -1 : offset)
+    let row = getRowPart()
 
     rowWrapper.append(row)
     row.before(beforeRow)
@@ -94,7 +94,7 @@ const renderBgText = ({ renderTo, letter}) => {
     updateState()
 
     rows.forEach(row => row.remove())
-    rows = new Array(Math.floor(wrapperHeight / rowHeight)).fill(0).map((_, index) => getRow(index % 2 === 0))
+    rows = new Array(Math.floor(wrapperHeight / rowHeight)).fill(0).map((_, index) => getRow(index % 2 === 0, index))
     wrapper.append(rows)
   }
 
