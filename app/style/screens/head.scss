@@ -34,6 +34,7 @@
       flex-direction: column;
       margin-top: 70px;
       margin-bottom: auto;
+
       @include dynamic-size(300, 525, height);
 
       @media screen and (min-width: #{$md-screen-max}px) {
@@ -70,24 +71,47 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    top: 0;
     left: 0;
     white-space: nowrap;
-    line-height: 1;
     display: flex;
     flex-direction: column;
     z-index: 0;
     user-select: none;
+    justify-content: center;
+    transform: rotate(0deg);
+    line-height: 1;
 
     p {
       @include default-fonts-settings;
-      @include dynamic-size(50, 120, font-size);
+      @include dynamic-size(50, 110, font-size);
 
       font-weight: 400;
       text-transform: lowercase;
       margin: 0;
-      position: absolute;
-      text-align: right;
+
+      pointer-events: none;
+      margin: 0px -13px;
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    p:before, p:after {
+      content: attr(data-text) "\a0";
+      min-width: 100%;
+      will-change: transform;
+      animation: text-display 12s linear infinite; /*скорость строки*/
+      animation-direction: inherit;
+      flex: 1 0 auto;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    p.reverse {
+      &:before, &:after {
+        animation: text-display-reverse 10s linear infinite; /*скорость строки*/
+      }
     }
 
     span {
@@ -95,9 +119,38 @@
     }
 
     div {
-      position: absolute;
       display: flex;
       flex-direction: column;
     }
+  }
+}
+
+
+.marquee {
+  margin: 0px -13px;
+  padding: 40px; /*размер блока сверху и снизу*/
+  background-color: #F5F2EF; /*цвет фона*/
+  font-family: 'Playfair Display SC', serif; /*дополнение к подключению шрифта из Google Fonts второе */
+  font-size: 20px; /*размер шрифта*/
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee::before, .marquee::after {
+
+}
+
+@keyframes text-display {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes text-display-reverse {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
