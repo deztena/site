@@ -46,13 +46,6 @@ function renderScreenServices({ renderTo, words } = {}) {
     const root = $(`#${id}`)
     const images = root.find('.screen-services__bg')
     const wordsElements = root.find('.screen-services__grid-item-word')
-    const total = 5
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
     images.eq(1).css('opacity', 0)
 
     animate(images.eq(1), 300, 300)

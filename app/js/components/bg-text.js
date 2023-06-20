@@ -2,8 +2,6 @@ import throttle from "lodash/throttle";
 
 const renderBgText = ({ renderTo, letter}) => {
   let rows = []
-  let rowHeight = 0
-  let letterWidth = 0
 
   const getRowPart = (offset, reverse) => {
     const text = new Array(4)
@@ -40,6 +38,7 @@ const renderBgText = ({ renderTo, letter}) => {
 
   setImmediate(() => {
     updateRows()
-  })}
+  })
+}
 
 window.renderBgText = renderBgText

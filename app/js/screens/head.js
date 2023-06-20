@@ -5,7 +5,6 @@ function renderScreenHead({ renderTo } = {}) {
   renderTo?.parents('.section-main').addClass('section-main_reset')
   renderTo?.parents('.page-container').addClass('page-container_reset')
   renderTo?.parents('.block-html').addClass('block-html_reset')
-  let showIndex = 0
   let images = []
 
   if (renderTo) {

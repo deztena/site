@@ -64,6 +64,7 @@
     &__text {
       @include dynamic-size(50, 450, margin-left);
       margin-top: auto;
+      margin-bottom: 20px;
     }
   }
 
@@ -100,7 +101,7 @@
       content: attr(data-text) "\a0";
       min-width: 100%;
       will-change: transform;
-      animation: text-display 12s linear infinite; /*скорость строки*/
+      animation: text-display 24s linear infinite; /*скорость строки*/
       animation-direction: inherit;
       flex: 1 0 auto;
       text-align: center;
@@ -110,7 +111,7 @@
 
     p.reverse {
       &:before, &:after {
-        animation: text-display-reverse 10s linear infinite; /*скорость строки*/
+        animation: text-display-reverse 22s linear infinite; /*скорость строки*/
       }
     }
 

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+</head>
+<body>
+<div class="deztena-app">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap"
+          rel="stylesheet">
+    <div class="screen">
+        <div class="screen__content container">
+            <div class="d-dropdown">
+                <style>
+                    /* Сам дропдаун */
+                    .d-dropdown {
+                        /* Шрифт */
+                        font-family: 'Mulish', sans-serif;
+                        /* Цвет шрифта */
+                        color: black;
+                        /* Размер шрифта, его наследуют все элементы, внутри дропдауна, как и цвет */
+                        font-size: 16px;
+                    }
+
+                    /* Заголовок */
+                    .d-dropdown__title {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        /* Отступ заголовка снизу */
+                        margin-bottom: 10px;
+                        /* Отступ заголовка справа (от стрелки) */
+                        margin-right: 5px;
+                    }
+
+                    /* Стили заголовка, когда дропдаун открыт */
+                    .d-dropdown__title_opened {
+                        /* Отступ заголовка снизу, когда дропдаун открыт */
+                        margin-bottom: 30px;
+                    }
+
+                    .d-dropdown__title_opened.d-dropdown__title_rotate .d-dropdown__title-arrow {
+                        transform: rotate(90deg);
+                    }
+
+                    /* Текст заголовка */
+                    .d-dropdown__title-text {
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+
+                    /* Стрелка */
+                    .d-dropdown__title-arrow {
+                        display: flex;
+                        align-items: center;
+                        /* Скорость поворота стрелки */
+                        transition: transform 0.2s linear;
+                        background-position: center;
+                        background-size: contain;
+                        height: auto;
+                        /* Размер стрелки */
+                        font-size: 50px;
+                        /* Отступ справа от стрелки */
+                        margin-right: 50px;
+                    }
+
+                    /* Подчеркивание */
+                    .d-dropdown__underline {
+                        display: block;
+                        background-color: black;
+                        height: 1px;
+                    }
+
+                </style>
+                <script>
+                    (function () {
+                        const dropdownEl = document.currentScript.parentElement
+                        const rotateArrow = true // включить поворот стрелки
+
+                        window.addEventListener('load', () => {
+                            const titleEl = dropdownEl.querySelector('.d-dropdown__title')
+                            const contentEl = dropdownEl.querySelector('.d-dropdown__content')
+                            const underLineEl = dropdownEl.querySelector('.d-dropdown__underline')
+
+                            if (rotateArrow) {
+                                titleEl.classList.add('d-dropdown__title_rotate')
+                            }
+
+                            function show() {
+                                contentEl.style.display = ''
+                                titleEl.classList.add('d-dropdown__title_opened')
+                                if (underLineEl) {
+                                    underLineEl.style.display = 'none'
+                                }
+                            }
+
+                            function hide() {
+                                contentEl.style.display = 'none'
+                                titleEl.classList.remove('d-dropdown__title_opened')
+                                if (underLineEl) {
+                                    underLineEl.style.display = ''
+                                }
+                            }
+
+                            hide()
+
+                            titleEl.addEventListener('click', () => {
+                                if (contentEl.style.display === 'none') {
+                                    show()
+                                } else {
+                                    hide()
+                                }
+                            })
+                        })
+                    })()
+                </script>
+                <div class="d-dropdown__title">
+                    <span class="d-dropdown__title-text">
+                        Заголовок
+                    </span>
+                    <span class="d-dropdown__title-arrow icon">
+                        <img src="..." alt="" />
+                    </span>
+                </div>
+                <span class="d-dropdown__underline"></span>
+                <div class="d-dropdown__content">
+                    Тело
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

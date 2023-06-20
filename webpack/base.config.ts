@@ -15,7 +15,8 @@ const config: Configuration = {
     'header': path.resolve(__dirname, '../app/js/layouts/header'),
     'dropdown': path.resolve(__dirname, '../app/js/components/dropdown'),
     'screen-head': path.resolve(__dirname, '../app/js/screens/head'),
-    'screen-services': path.resolve(__dirname, '../app/js/screens/services')
+    'screen-services': path.resolve(__dirname, '../app/js/screens/services'),
+    'slider': path.resolve(__dirname, '../app/js/components/slider'),
   },
   output: {
     path: path.resolve(__dirname, '../public'),
@@ -23,10 +24,14 @@ const config: Configuration = {
     publicPath: '/',
   },
   optimization: {
-    runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
+        slider: {
+          chunks: 'all',
+          test: /[\\/]node_modules[\\/]swiper[\\/]/,
+          name: 'swiper'
+        },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors'
