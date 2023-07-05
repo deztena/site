@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import anime from 'animejs'
-import {once} from "lodash";
+import {debounce, once} from "lodash";
+import throttle from "lodash/throttle";
 
 
 const renderAnimeSlider = () => {
@@ -9,23 +10,44 @@ const renderAnimeSlider = () => {
     const track = $('.anime-slider_track')
     const slides = $('.anime-slider_slide')
     const textBoundary = $('.anime-slider_slide-text-boundary')
-
-    let inited = false
-
+    const spacing = 100
+    const activeSlideScale = 100
+    const slidesCount = slides.toArray().length
+    let slideSize = 0
+    let activeSlideSize = 0
+    let currentIndex = 0
+    let isLastSlide = false
+    let isFirstSlide = false
+    let rootHeight = 0
     let oldSlide = null
     let currentSlide = null
+    let inited = false
+    let rootCenter = root.width() / 2
 
-    const spacing = 100
-    const slideWidth = 600
-    const activeSlideWidth = 700
+    let isAnimationPending = false
 
-    function update(currentIndex = 1) {
-      const rootCenter = root.width() / 2
+    slideSize = slides.eq(0).height()
+    activeSlideSize = slideSize + activeSlideScale
+    rootHeight = ((slidesCount) * slideSize) + activeSlideSize + (spacing + slidesCount)
 
+    root.css('height', rootHeight)
+
+    function update(_currentIndex) {
+      if (_currentIndex === currentIndex) {
+        return
+      }
+
+
+      currentIndex = _currentIndex ?? currentIndex
+      isLastSlide = (slides.toArray().length - 1) === currentIndex
+      isFirstSlide = _currentIndex === 0
       oldSlide = currentSlide
       currentSlide = slides.eq(currentIndex)
 
-      const currentSlideCenter = activeSlideWidth / 2
+
+      isAnimationPending = true
+
+      const currentSlideCenter = activeSlideSize / 2
       const currentSlidePosition = rootCenter - currentSlideCenter
 
       function getWords() {
@@ -36,11 +58,6 @@ const renderAnimeSlider = () => {
         textBoundary.html(currentSlide.children('.anime-slider_slide-text').text().trim().split('').map(text => `<span>${text}</span>`).join('').replaceAll(' ', '&nbsp;'))
         return getWords()
       }
-
-      console.log(oldSlide, currentSlide)
-
-      root.height(activeSlideWidth)
-
 
       const showWords = once((callback) => {
         const words = setText()
@@ -96,14 +113,13 @@ const renderAnimeSlider = () => {
           if (index > currentIndex) {
             anime({
               targets: slide,
-              left: currentSlidePosition + ((activeSlideWidth + spacing) * (index - currentIndex)),
+              left: currentSlidePosition + ((activeSlideSize + spacing) * (index - currentIndex)),
               easing: 'easeInOutSine'
             })
           } else if (index < currentIndex) {
-            console.log(currentSlidePosition, activeSlideWidth - spacing, currentIndex - index)
             anime({
               targets: slide,
-              left: (currentSlidePosition - 100) - ((activeSlideWidth - spacing) * (currentIndex - index)),
+              left: (currentSlidePosition - 100) - ((activeSlideSize - spacing) * (currentIndex - index)),
               easing: 'easeInOutSine'
             })
           }
@@ -114,21 +130,24 @@ const renderAnimeSlider = () => {
         anime({
           targets: currentSlide[0],
           left: currentSlidePosition,
-          width: activeSlideWidth,
-          height: activeSlideWidth,
+          width: activeSlideSize,
+          height: activeSlideSize,
           easing: 'easeInOutSine',
           update: function (anim) {
             if (anim.progress > 50) {
               showWords()
             }
+          },
+          complete: function (anim) {
+            isAnimationPending = false
           }
         })
 
         if (oldSlide) {
           anime({
             targets: oldSlide[0],
-            width: slideWidth,
-            height: slideWidth,
+            width: slideSize,
+            height: slideSize,
             easing: 'easeInOutSine',
           })
         }
@@ -136,6 +155,8 @@ const renderAnimeSlider = () => {
 
 
       if (inited) {
+        isAnimationPending = true
+
         hideWords(once(() => {
           showActive()
 
@@ -156,6 +177,12 @@ const renderAnimeSlider = () => {
       })
     })
 
+    let lastScrollPosition = window.scrollY
+
+    $(window).scroll(e => {
+      console.log(window.scrollY > lastScrollPosition)
+      lastScrollPosition = window.scrollY
+    })
     update()
   }
 

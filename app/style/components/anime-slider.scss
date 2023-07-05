@@ -1,8 +1,14 @@
 .anime-slider {
   width: 100%;
-  overflow: hidden;
   position: relative;
-  height: 100%;
+
+  &_view {
+    top: 100px;
+    width: 100%;
+    overflow: hidden;
+    position: sticky;
+    height: 700px;
+  }
 
   &_track {
     display: flex;
