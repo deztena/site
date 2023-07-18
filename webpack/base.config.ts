@@ -17,6 +17,9 @@ const config: Configuration = {
     'screen-head': path.resolve(__dirname, '../app/js/screens/head'),
     'screen-services': path.resolve(__dirname, '../app/js/screens/services'),
     'slider': path.resolve(__dirname, '../app/js/components/slider'),
+    'anime-slider': path.resolve(__dirname, '../app/js/components/anime-slider2'),
+    'anime-svg': path.resolve(__dirname, '../app/js/components/anime-svg'),
+    'anime-blur': path.resolve(__dirname, '../app/js/components/anime-blur'),
   },
   output: {
     path: path.resolve(__dirname, '../public'),

@@ -1,0 +1,72 @@
+.anime-slider {
+  width: 100vw;
+  position: relative;
+  height: 100%;
+
+
+  &_example {
+    height: 600px;
+    width: 600px;
+  }
+
+  &_view {
+    top: 100px;
+    width: 100%;
+    overflow: hidden;
+    height: 800px;
+  }
+
+  &_track {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    margin-left: 50%;
+  }
+
+  &_slide {
+    background-color: black;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    margin-right: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &-text {
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      display: flex;
+      overflow: hidden;
+
+      span {
+        display: block;
+      }
+    }
+
+    &-text-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    &-text-container {
+      overflow: hidden;
+      z-index: 1;
+    }
+  }
+}

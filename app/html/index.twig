@@ -9,6 +9,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
+
+    <div class="screen">
+        <div class="screen__content">
+            <div class="anime-svg_wrapper" style="margin: 0 auto">
+            </div>
+        </div>
+    </div>
+
+    <div class="screen" id="blur-svg-screen">
+        <div class="screen__content">
+            <div class="anime-svg_wrapper" style="margin: 0 auto; display: flex; align-items: center; justify-content: center; flex: 1 1 100%">
+                <p class="anime-blur">asdasd</p>
+                <p class="anime-blur">asdasd</p>
+                <p class="anime-blur">asdasd</p>
+                <p class="anime-blur">asdasd</p>
+                <p class="anime-blur">asdasd</p>
+
+            </div>
+        </div>
+        <script>
+          renderAnimeBlur({
+            $target: $('.anime-blur'),
+          })
+        </script>
+    </div>
+
     <div class="screen">
         <div class="screen__content">
             <div class="anime-svg_wrapper" style="margin: 0 auto">
@@ -32,17 +59,8 @@
         <div class="">
             <div class="anime-slider">
                 <div class="anime-slider_view">
-                    <div class="anime-slider_slide-text-wrapper">
-                        <div class="anime-slider_slide-text-container">
-                        <span class="anime-slider_slide-text-boundary">
-
-                        </span>
-                        </div>
-                    </div>
                     <div class="anime-slider_track">
                         <div class="anime-slider_slide">
-                            <div class="anime-slider_slide-text">
-                            </div>
                             <div class="anime-slider_slide-text">
                                 Ты пидор
                             </div>
@@ -71,8 +89,12 @@
                 </div>
             </div>
         </div>
+        <div class="anime-slider_example">
+            <div class="anime-slider_slide-text">
+            </div>
+        </div>
         <script>
-          renderAnimeSlider()
+          renderAnimeSlider2()
         </script>
     </div>
     <script>
@@ -117,6 +139,10 @@
                             }
                         ]
                     }
+                })
+                renderBgText({
+                  renderTo: $('.head-screen-bg-text'),
+                  letter: 'Krystyna Kaznacheieva'
                 })
             </script>
             <script>
