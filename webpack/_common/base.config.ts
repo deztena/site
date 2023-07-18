@@ -1,14 +1,17 @@
 import path from 'path';
 import merge from 'webpack-merge';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import rules from './rules.config';
+import resolve from './resolve.config';
 import webpack, {Configuration} from "webpack";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import constants from "./constants";
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import {StatsWriterPlugin} from "webpack-stats-plugin";
+import UglifyJsPlugin from "uglifyjs-webpack-plugin";
 
 const config: Configuration = {
+  mode: constants.isDev ? 'development' : 'production',
   entry: {
     'burger-menu': path.resolve(__dirname, '../app/js/components/burger-menu'),
     'bg-text': path.resolve(__dirname, '../app/js/components/bg-text'),
@@ -27,6 +30,10 @@ const config: Configuration = {
     publicPath: '/',
   },
   optimization: {
+    minimize: !constants.isDev,
+    minimizer: !constants.isDev ? [
+      new UglifyJsPlugin()
+    ] : [],
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
@@ -44,17 +51,15 @@ const config: Configuration = {
   },
   externals: constants.isDev ? [] : ['jquery'],
   plugins: [
+    ...(constants.analyzeBundle ? [
+      new BundleAnalyzerPlugin()
+    ] : []),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(constants.isDev ? 'development' : 'production'),
         DEBUG: JSON.stringify(false),
         BROWSER: JSON.stringify(true)
       }
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../app/html/index.twig'),
-      filename: 'index.html',
-      inject: 'head'
     }),
     new CleanWebpackPlugin(),
     new StatsWriterPlugin({
@@ -65,4 +70,4 @@ const config: Configuration = {
     })
   ]
 };
-export default merge(rules, config);
+export default merge(rules, resolve, config);

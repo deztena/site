@@ -1,0 +1,17 @@
+@import "./variables";
+@import "./functions";
+@import "./minxins";
+@import "./misc";
+@import "./screens";
+
+
+body {
+  margin: 0;
+}
+
+#app {
+  position: relative;
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+}

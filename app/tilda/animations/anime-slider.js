@@ -1,7 +1,6 @@
 import $ from 'jquery'
 import anime from 'animejs'
-import {debounce, once} from "lodash";
-import throttle from "lodash/throttle";
+import {once} from "lodash";
 
 
 const renderAnimeSlider = () => {

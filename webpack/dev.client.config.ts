@@ -4,8 +4,9 @@ import path from 'path';
 import webpack, { Configuration } from 'webpack';
 import merge from 'webpack-merge';
 
-import common from './base.config';
-import constants from "./constants";
+import common from './_common/base.config';
+import constants from "./_common/constants";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const config: Configuration = {
   mode: 'development',
@@ -32,6 +33,11 @@ const config: Configuration = {
     overlay: true,
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../app/_common/html/index.twig'),
+      filename: 'index.html',
+      inject: 'head'
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ]
 };

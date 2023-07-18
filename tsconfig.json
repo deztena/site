@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "outDir": "./public/",
+    "jsx": "react-jsx",
     "baseUrl": ".",
-    "typeRoots": ["app/typings", "node_modules/@types"],
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,          // allow sourcemap support
-    "strictNullChecks": true,   // enable strict null checks as a best practice
-    "module": "commonjs",            // specify module code generation
-    "target": "es5",            // specify ECMAScript target version
-    "allowJs": false,
-    "checkJs": false,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "module": "commonjs",
+    "target": "ES3",
+    "allowJs": true,
+    "checkJs": true,
     "moduleResolution": "node",
     "noUnusedLocals": false,
     "noUnusedParameters": true,
@@ -33,6 +31,6 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": ["app/**/*", "app/typings/*", "webpack/*", "app/typings/images.d.ts"],
+  "include": ["app/**/*", "webpack/*"],
   "exclude": ["node_modules", "public", "**/*.js", "**/*.jsx"],
 }

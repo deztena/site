@@ -1,0 +1,20 @@
+@import "../minxins";
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  @include dynamic-size(50, 100, padding-top);
+  @include dynamic-size(50, 100, padding-bottom);
+
+  &__content {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: #{$sm-screen-max}px) {
+      padding-bottom: 50px;
+    }
+  }
+}

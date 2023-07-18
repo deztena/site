@@ -1,0 +1,9 @@
+@import "../variables";
+@import "../functions";
+@import "dynamic-size";
+
+@mixin default-fonts-settings {
+  font-family: 'Mulish', sans-serif;
+  color: black;
+  @include dynamic-size($font-size, $font-size-max, font-size);
+}

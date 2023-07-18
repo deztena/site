@@ -1,8 +1,0 @@
-import './burger-menu'
-import './bg-text'
-import './dropdown'
-import './slider'
-import './anime-slider'
-import './anime-slider2'
-import './anime-svg'
-import './anime-blur'

@@ -1,14 +1,13 @@
 import $ from 'jquery'
 import anime from 'animejs'
-import {once} from "lodash";
 import throttle from "lodash/throttle";
 
 
 const renderAnimeSvg = ({
-                         duration = 1500,
-                         target,
-                         offset = 0,
-                       }) => {
+                          duration = 1500,
+                          target,
+                          offset = 0,
+                        }) => {
   function init() {
     const $target = $(`${target} svg`)
     let isComplete = false

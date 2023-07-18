@@ -1,0 +1,20 @@
+@import "../variables";
+
+.block-html {
+  padding: 0;
+}
+html, body, #app {
+  height: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: #{$md-screen-max}px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: #{$md-screen-max}px) {
+    padding: 0 25px;
+  }
+}
