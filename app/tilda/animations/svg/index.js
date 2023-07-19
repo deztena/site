@@ -42,3 +42,5 @@ const renderAnimeSvg = ({
 }
 
 window.renderAnimeSvg = renderAnimeSvg
+
+export default renderAnimeSvg

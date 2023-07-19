@@ -47,4 +47,6 @@ const renderAnimeBlur = ({
   setImmediate(init)
 }
 
+export default renderAnimeBlur
+
 window.renderAnimeBlur = renderAnimeBlur
