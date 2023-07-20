@@ -4,7 +4,8 @@ import throttle from "lodash/throttle";
 
 
 const renderAnimeBlur = ({
-                           duration = 500,
+                           duration = 1000,
+                           partsShowOffset = 700,
                            $target,
                            offset = 0,
                          } = {}) => {
@@ -28,7 +29,7 @@ const renderAnimeBlur = ({
             update: (anim) => {
               this.style.filter = 'blur(' + 30 * (100 - anim.progress) / 100 + 'px)'
             }
-          }, `-=${index === 0 ? 0 : 450}`)
+          }, `-=${index === 0 ? 0 : partsShowOffset}`)
         })
 
         isComplete = true

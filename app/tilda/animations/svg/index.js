@@ -5,22 +5,21 @@ import throttle from "lodash/throttle";
 
 const renderAnimeSvg = ({
                           duration = 1500,
-                          target,
+                          $targetSvg,
                           offset = 0,
                         }) => {
   function init() {
-    const $target = $(`${target} svg`)
     let isComplete = false
 
-    $target.css('opacity', '0')
+    $targetSvg.css('opacity', '0')
 
     function update() {
 
-      if (!isComplete && (($target[0].getBoundingClientRect().top - window.innerHeight) - offset) <= 0) {
-        $target.css('opacity', '1')
+      if (!isComplete && (($targetSvg[0].getBoundingClientRect().top - window.innerHeight) - offset) <= 0) {
+        $targetSvg.css('opacity', '1')
 
         anime({
-          targets: $target.children('path').toArray(),
+          targets: $targetSvg.children('path').toArray(),
           strokeDashoffset: [anime.setDashoffset, 0],
           easing: 'easeInOutSine',
           duration,

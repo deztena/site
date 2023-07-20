@@ -1,13 +1,14 @@
 import type { Meta } from '@storybook/react';
 import renderAnimeSvg from './index'
-import {useEffect} from "react";
+import {FC, useEffect} from "react";
+import $ from "jquery";
 
 
-export const Example = () => {
+export const Example: FC = () => {
 
   useEffect(() => {
     renderAnimeSvg({
-      target: '#anime-svg'
+      $targetSvg: $('#anime-svg svg')
     })
   }, [])
 

@@ -29,7 +29,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "declaration": true,
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": false
   },
   "include": ["app/**/*", "webpack/*"],
   "exclude": ["node_modules", "public", "**/*.js", "**/*.jsx"],

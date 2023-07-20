@@ -1,16 +1,16 @@
 import type { Meta } from '@storybook/react';
 import renderAnimeBlur from './index'
-import {useEffect} from "react";
+import {FC, useEffect} from "react";
 import $ from "jquery";
 
 
-export const Example = () => {
-
+export const Example: FC = props => {
   useEffect(() => {
     renderAnimeBlur({
+      ...props,
       $target: $('.anime-blur'),
     })
-  }, [])
+  })
 
   return (
     <>
@@ -51,6 +51,14 @@ const meta: Meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
+    duration: {
+      defaultValue: 500,
+      type: 'number'
+    },
+    partsShowOffset: {
+      defaultValue: 450,
+      type: 'number'
+    }
   },
 };
 
