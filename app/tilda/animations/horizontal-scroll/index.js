@@ -1,10 +1,9 @@
 import $ from 'jquery'
 import anime from 'animejs'
 import throttle from "lodash/throttle";
-import "../../style/components/anime-slider2.scss";
+import "./styles.scss";
 
-
-const renderAnimeSlider = ({ $root } = {}) => {
+const renderAnimeSlider = ({$root} = {}) => {
   function init() {
     const slideExample = $('.anime-slider_example')
     const root = $root ?? $('.anime-slider')
@@ -29,25 +28,51 @@ const renderAnimeSlider = ({ $root } = {}) => {
       word.html(word.text().trim().split('').map(text => `<span>${text}</span>`).join('').replaceAll(' ', '&nbsp;'))
     })
 
-    root.css('height', rootHeight + slideSize)
+    const height = rootHeight + slideSize
+
+    root.css('height', height)
 
     let lastTranslateX = 0
-    let prevAnimation = null
+
+    const slidesMoveTL = anime.timeline({
+      autoplay: false
+    })
+
+    slidesMoveTL.add({
+      targets: track[0],
+      duration: height,
+      translateX: -(rootHeight + slideSize),
+      easing: 'linear',
+    })
+
+
+    slides.toArray().forEach((wordEl, wordIndex) => {
+      slidesMoveTL.add({
+        targets: wordEl,
+        duration: slideSize,
+        width: slideSize + 200,
+        height: slideSize + 200,
+        easing: 'linear',
+      }, (slideSize * wordIndex) + (200 * wordIndex))
+    })
+    slides.children('.anime-slider_slide-text').toArray().forEach((wordEl, wordIndex) => {
+      slidesMoveTL.add({
+        targets: wordEl,
+        duration: slideSize,
+        easing: 'linear',
+        update: (anim) => {
+          wordEl.style.filter = 'blur(' + 30 * (100 - anim.progress) / 100 + 'px)'
+        }
+      }, (slideSize * wordIndex) * 1.2)
+    })
 
     function update() {
       const topOffset = root[0].getBoundingClientRect().top
 
-
       lastTranslateX = topOffset > 0 ? 0 : topOffset
 
       if (lastTranslateX > (-rootHeight)) {
-
-        prevAnimation = anime({
-          targets: track[0],
-          translateX: lastTranslateX,
-          duration: 1000,
-          easing: 'easeOutQuint'
-        })
+        slidesMoveTL.seek(height * (Math.abs((lastTranslateX * 100) / rootHeight) / 100))
       }
     }
 
@@ -96,24 +121,16 @@ const renderAnimeSlider = ({ $root } = {}) => {
         })
       })
     }
-
-
-    $(window).scroll(throttle(e => {
-      if (root[0].getBoundingClientRect().top < 1 && root[0].getBoundingClientRect().bottom > 0) {
-        view.css('transform', `translateY(${root[0].getBoundingClientRect().top * -1}px)`)
-      }
-    }))
-
-    $(window).scroll(throttle(e => {
-      update()
-    }, 100))
-    $(window).scroll(throttle(e => {
-      updateWords()
-    }, 50))
     update()
+
+    $(window).on('scroll', throttle(e => {
+      update()
+    }, 0))
   }
 
   setImmediate(init)
 }
 
 window.renderAnimeSlider2 = renderAnimeSlider
+
+export default renderAnimeSlider
