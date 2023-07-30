@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <script src="runtime.js"></script>
+    {{ JS_CHUNK_LINKS }}
+    {{ JS_CHUNKS }}
+
+    <script>
+        deztenaRuntime.define('jquery', () => $)
+        deztenaRuntime.require(['deztena/entry-index'])
+    </script>
+</head>
+<body>
+</body>
+</html>

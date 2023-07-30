@@ -21,7 +21,7 @@ const config: UserConfig = {
         chunkFileNames: 'chunk-[name].js',
         amd: {
           autoId: true,
-          basePath: 'deztena',
+          basePath: '',
           define: 'deztenaRuntime.define'
         },
         globals: {
