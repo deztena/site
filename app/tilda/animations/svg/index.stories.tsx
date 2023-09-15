@@ -8,7 +8,8 @@ export const Example: FC = () => {
 
   useEffect(() => {
     renderAnimeSvg({
-      $targetSvg: $('#anime-svg svg')
+      $targetSvg: $('#anime-svg svg'),
+      offset: -300
     })
   }, [])
 
@@ -45,6 +46,10 @@ export const Example: FC = () => {
                     stroke-miterlimit="10" stroke-linecap="round"/>
             </svg>
           </div>
+        </div>
+      </div>
+      <div className="screen" id="blur-svg-screen">
+        <div className="screen__content">
         </div>
       </div>
     </>

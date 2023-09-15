@@ -24,10 +24,9 @@ export const Example: FC = props => {
             margin: 0,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
+            flexDirection: 'column',
             flex: '1 1 100%'
           }}>
-            <p className="anime-blur">asdasd</p>
             <p className="anime-blur">asdasd</p>
             <p className="anime-blur">asdasd</p>
             <p className="anime-blur">asdasd</p>
